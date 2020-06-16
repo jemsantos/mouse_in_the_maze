@@ -5,22 +5,28 @@
 class Maze:
 
     def __init__(self, cod_maze=1, row=9, column=7):
+        # row e column seria para poder definir um laberinto de tamanho variável
         self._row = row
         self._column = column
+        # qual dos modelos de laberinto vamos usar
         self._cod_maze = cod_maze
+        # o laberinto em si
         self._maze = []
 
+        # criar o laberinto apropriado
         if cod_maze == 1:
             self.createMaze1()
         elif cod_maze == 2:
             self.createMaze2()
 
-        print(f"Laberinto Iniciado com as dimensões: {self._row} X {self._column}")
+        # print(f"Laberinto Iniciado com as dimensões: {self._row} X {self._column}")
         print(" ")
 
+    # retorna o laberinto
     def getMaze(self) -> list:
         return self._maze
 
+    # cria o laberinto com base no modelo
     def createMaze1(self) -> None:
         self._maze.append(["#", "#", "#", "#", "#", "M", "#"])
         self._maze.append(["#", " ", " ", " ", "#", " ", "#"])
@@ -32,6 +38,7 @@ class Maze:
         self._maze.append(["#", " ", " ", " ", " ", " ", "#"])
         self._maze.append(["#", "#", "#", "#", "#", "#", "#"])
 
+    # cria o laberinto com base no modelo
     def createMaze2(self) -> None:
         self._maze.append(["#", "#", "#", "#", "#", "M", "#", "#", "#"])
         self._maze.append(["#", " ", " ", " ", " ", " ", " ", " ", "#"])
@@ -40,16 +47,17 @@ class Maze:
         self._maze.append(["#", " ", "#", " ", "#", " ", "#", " ", "#"])
         self._maze.append(["#", " ", "#", " ", "#", " ", "#", " ", "#"])
         self._maze.append(["#", " ", "#", " ", "#", " ", "#", " ", "#"])
-        self._maze.append(["#", " ", "#", " ", "#", " ", "#", "C", "#"])
+        self._maze.append(["#", " ", "#", " ", "#", " ", "#", " ", "#"])
         self._maze.append(["#", " ", "#", " ", "#", " ", "#", "#", "#"])
         self._maze.append(["#", " ", "#", " ", "#", " ", "#", "#", "#"])
-        self._maze.append(["#", " ", " ", " ", " ", " ", " ", " ", "#"])
+        self._maze.append(["#", " ", " ", " ", " ", " ", " ", "C", "#"])
         self._maze.append(["#", "#", "#", "#", "#", "#", "#", "#", "#"])
 
     def valid(self, moves) -> bool:
         start = 0
+        # verifica a existência do "M" de "Mouse" na primeira linha
         for x, pos in enumerate(self._maze[0]):
-            if pos == "P":
+            if pos == "M":
                 start = x
 
         i = start
@@ -63,22 +71,23 @@ class Maze:
                 j -= 1
             elif move == "D":
                 j += 1
+
             if not (0 <= i < len(self._maze[0]) and 0 <= j < len(self._maze)):
                 return False
             elif self._maze[j][i] == "#":
                 return False
-
         return True
 
     def printMaze(self, path="") -> None:
         start = 0
+        # verifica a existência do "M" de "Mouse" na primeira linha
         for x, pos in enumerate(self._maze[0]):
-            if pos == "P":
+            if pos == "M":
                 start = x
 
         i = start
         j = 0
-        pos = set()
+        pos = set()  # O QUE É ISSO?????
         for move in path:
             if move == "L":
                 i -= 1
@@ -100,10 +109,10 @@ class Maze:
 
     def findEnd(self, moves) -> bool:
         start = 0
-        for x, pos in enumerate(self._maze[0]):
-            print(x, pos)
 
-            if pos == "P":
+        for x, pos in enumerate(self._maze[0]):
+            # print(x, pos)
+            if pos == "M":
                 start = x
 
         i = start
@@ -118,11 +127,11 @@ class Maze:
             elif move == "D":
                 j += 1
 
-        if self._maze[j][i] == "Q":
+        if self._maze[j][i] == "C":
+            print()
             print("Found: " + moves)
-            self.printMaze(self._maze, moves)
+            self.printMaze(moves)
             return True
-
         return False
 
     def __str__(self):

@@ -11,7 +11,7 @@ def main():
         nums = queue.Queue()
         nums.put("")
         add = ""
-        maze = Maze(1)
+        maze = Maze(2)  # qual dos laberintos criar
 
         maze.printMaze(add)
 
