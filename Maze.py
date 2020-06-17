@@ -5,10 +5,10 @@
 class Maze:
 
     def __init__(self, cod_maze=1, row=9, column=7):
-        # row e column seria para poder definir um laberinto de tamanho variável
+        # row e column seria para poder definir um labirinto de tamanho variável
         self._row = row
         self._column = column
-        # qual dos modelos de laberinto vamos usar
+        # qual dos modelos de labirinto vamos usar
         self._cod_maze = cod_maze
         # o laberinto em si
         self._maze = []
@@ -19,14 +19,14 @@ class Maze:
         elif cod_maze == 2:
             self.createMaze2()
 
-        # print(f"Laberinto Iniciado com as dimensões: {self._row} X {self._column}")
+        # print(f"Labirinto Iniciado com as dimensões: {self._row} X {self._column}")
         print(" ")
 
-    # retorna o laberinto
+    # retorna o labirinto
     def getMaze(self) -> list:
         return self._maze
 
-    # cria o laberinto com base no modelo
+    # cria o labirinto com base no modelo
     def createMaze1(self) -> None:
         self._maze.append(["#", "#", "#", "#", "#", "M", "#"])
         self._maze.append(["#", " ", " ", " ", "#", " ", "#"])
@@ -38,7 +38,7 @@ class Maze:
         self._maze.append(["#", " ", " ", " ", " ", " ", "#"])
         self._maze.append(["#", "#", "#", "#", "#", "#", "#"])
 
-    # cria o laberinto com base no modelo
+    # cria o labirinto com base no modelo
     def createMaze2(self) -> None:
         self._maze.append(["#", "#", "#", "#", "#", "M", "#", "#", "#"])
         self._maze.append(["#", " ", " ", " ", " ", " ", " ", " ", "#"])
@@ -87,7 +87,8 @@ class Maze:
 
         i = start
         j = 0
-        pos = set()  # O QUE É ISSO?????
+        pos = set()  # Seta a variavel pos como uma variavel iterativa e que permite armazenamento. 
+                     # Assim no final de cada movimento ele armazena os valores na variavel pos.
         for move in path:
             if move == "L":
                 i -= 1
