@@ -1,6 +1,5 @@
 # mouse => rato
 
-
 class Mouse:
 
     def __init__(self):
