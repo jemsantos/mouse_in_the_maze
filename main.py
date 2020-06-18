@@ -8,6 +8,7 @@ def main():
     print("Mouse in the Maze")
 
     try:
+        # implementa filas de múltiplos produtores e vários consumidores
         nums = queue.Queue()
         nums.put("")
         add = ""
