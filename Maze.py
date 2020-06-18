@@ -89,6 +89,7 @@ class Maze:
         j = 0
         pos = set()  # Seta a variavel pos como uma variavel iterativa e que permite armazenamento. 
                      # Assim no final de cada movimento ele armazena os valores na variavel pos.
+                     # armazena o valor de uma posição válida, que pode receber um movimento.
         for move in path:
             if move == "L":
                 i -= 1
